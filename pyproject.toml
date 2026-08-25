@@ -49,7 +49,7 @@ known-first-party = ["periodic_table_tui"]
 [tool.pytest.ini_options]
 asyncio_mode = "auto"
 
-[tool.pixi.project]
+[tool.pixi.workspace]
 channels = ["conda-forge"]
 platforms = ["osx-arm64", "osx-64", "linux-64"]
 
