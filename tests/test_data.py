@@ -20,3 +20,21 @@ def test_every_element_has_a_known_category():
 def test_grid_positions_do_not_collide():
     positions = [(e.period, e.group) for e in ELEMENTS]
     assert len(positions) == len(set(positions))
+
+
+def test_phase_is_one_of_the_known_values():
+    for element in ELEMENTS:
+        assert element.phase in {"solid", "liquid", "gas", "unknown"}
+
+
+def test_known_element_chemistry_looks_right():
+    hydrogen = ELEMENTS_BY_NUMBER[1]
+    assert hydrogen.phase == "gas"
+
+    iron = ELEMENTS_BY_NUMBER[26]
+    assert iron.phase == "solid"
+    assert iron.density is not None and iron.density > 0
+    assert iron.electron_configuration.startswith("[Ar]")
+
+    mercury = ELEMENTS_BY_NUMBER[80]
+    assert mercury.phase == "liquid"

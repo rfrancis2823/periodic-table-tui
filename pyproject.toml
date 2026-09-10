@@ -25,6 +25,7 @@ dev = [
     "textual-dev>=1.7.0",
     "pytest>=8.0.0",
     "pytest-asyncio>=0.24.0",
+    "mendeleev>=0.19.0",
 ]
 
 [tool.ruff]
@@ -64,6 +65,7 @@ ruff = "*"
 textual-dev = "*"
 pytest = "*"
 pytest-asyncio = "*"
+mendeleev = "*"
 
 [tool.pixi.environments]
 default = { features = [], solve-group = "default" }
@@ -74,3 +76,4 @@ run = "python -m periodic_table_tui"
 lint = "ruff check ."
 format = "ruff format ."
 test = "python -m pytest"
+gen-data = "python scripts/generate_data.py"
