@@ -65,7 +65,7 @@ src/periodic_table_tui/
     data.py    # element data (all 118 elements)
     app.py     # Textual app: grid of tiles + detail panel
 scripts/
-    generate_data.py   # regenerates data.py's chemistry fields (dev-only)
+    generate_data.py   # regenerates data.py's mendeleev-sourced fields (dev-only)
 tests/
     test_data.py
     test_app.py
@@ -73,12 +73,14 @@ tests/
 
 ## Regenerating element data
 
-`data.py`'s core fields (number, symbol, name, mass, category, summary) are
-hand-authored. The extra chemistry fields (melting/boiling point, density,
-electron configuration, electronegativity, atomic radius, oxidation states)
-are generated from the [`mendeleev`](https://mendeleev.readthedocs.io/)
-package's data. `mendeleev` is a dev-only dependency — it's not imported by
-the app at runtime, only by the generator script:
+`data.py`'s identity fields (number, symbol, name) and grid layout (category,
+period, group — synthetic grid coordinates, not real quantum periods/groups,
+to place lanthanides and actinides on their own rows) are hand-authored.
+Everything else — mass, summary, melting/boiling point, density, electron
+configuration, electronegativity, atomic radius, oxidation states — is
+generated from the [`mendeleev`](https://mendeleev.readthedocs.io/) package's
+data. `mendeleev` is a dev-only dependency — it's not imported by the app at
+runtime, only by the generator script:
 
 ```sh
 uv run python scripts/generate_data.py
